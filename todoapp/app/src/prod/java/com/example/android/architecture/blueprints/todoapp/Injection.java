@@ -23,10 +23,10 @@ import com.example.android.architecture.blueprints.todoapp.addedittask.domain.us
 import com.example.android.architecture.blueprints.todoapp.addedittask.domain.usecase.GetTask;
 import com.example.android.architecture.blueprints.todoapp.addedittask.domain.usecase.SaveTask;
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
+import com.example.android.architecture.blueprints.todoapp.data.FakeTasksRemoteDataSource;
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository;
 import com.example.android.architecture.blueprints.todoapp.data.source.local.TasksLocalDataSource;
 import com.example.android.architecture.blueprints.todoapp.data.source.local.ToDoDatabase;
-import com.example.android.architecture.blueprints.todoapp.data.source.remote.TasksRemoteDataSource;
 import com.example.android.architecture.blueprints.todoapp.statistics.domain.usecase.GetStatistics;
 import com.example.android.architecture.blueprints.todoapp.tasks.domain.filter.FilterFactory;
 import com.example.android.architecture.blueprints.todoapp.tasks.domain.usecase.ActivateTask;
@@ -46,7 +46,7 @@ public class Injection {
     public static TasksRepository provideTasksRepository(@NonNull Context context) {
         checkNotNull(context);
         ToDoDatabase database = ToDoDatabase.getInstance(context);
-        return TasksRepository.getInstance(TasksRemoteDataSource.getInstance(),
+        return TasksRepository.getInstance(FakeTasksRemoteDataSource.getInstance(),
                 TasksLocalDataSource.getInstance(new AppExecutors(),
                         database.taskDao()));
     }
