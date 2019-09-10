@@ -26,5 +26,5 @@ script:
   - cd todoapp
   - ./gradlew assembleDebug --stacktrace
   - ls app/build/intermediates
-  - ls app/build/intermediates/javac
+  - ls app/build/intermediates/classes
   - sonar-scanner
